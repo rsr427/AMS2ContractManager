@@ -164,5 +164,15 @@
       "Your dashboard tracks your active contract, season history, and career progression. Each season concludes with a media-style summary that reflects your performance, reputation, and contract situation.",
       "Your career is shaped by your decisions, your results, and the evolving landscape of racing. Choose wisely, perform consistently, and navigate the financial and competitive pressures of the motorsport world."
     ]
-  }
+  },
+  
+  "careerEnd": {
+  "headline": "<Driver> Concludes an 18-Year Career",
+  "commentary": [
+    "After nearly two decades of competition, your journey through the world of motorsport comes to a close.",
+    "Your career featured triumphs, challenges, and defining moments that shaped your legacy.",
+    "You retire with total earnings of $<Earnings>, marking the final chapter of your racing story."
+  ]
+}
+
 }
