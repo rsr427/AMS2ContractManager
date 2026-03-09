@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AMS2 Contract Manager</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    /* ===========================
+       GLOBAL THEME (SNES-LIGHT)
+       =========================== */
+
+    :root {
+      --bg-main: #d9d9e0;        /* light gray */
+      --bg-panel: #f2f2f7;       /* lighter panel */
+      --text-main: #222222;      /* dark gray text */
+      --text-muted: #555555;
+      --accent-light: #c7a4ff;   /* light purple */
+      --accent-dark: #7b4bff;    /* dark purple */
+      --accent-danger: #b00020;
+      --border-color: #b0b0c0;
+      --shadow-soft: 0 2px 6px rgba(0,0,0,0.15);
+      --radius: 6px;
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-main);
+      background: var(--bg-main);
+      color: var(--text-main);
+    }
+
+    h1, h2, h3, h4 {
+      margin: 0 0 0.5rem 0;
+      font-weight: 600;
+    }
+
+    p {
+      margin: 0 0 0.5rem 0;
+    }
+
+    a {
+      color: var(--accent-dark);
+      text-decoration: none;
+    }
+
+    /* ===========================
+       LAYOUT
+       =========================== */
+
+    .app-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+
+    .app-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .app-logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .app-actions {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .panel {
+      background: var(--bg-panel);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--border-color);
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .panel-title {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    /* ===========================
+       BUTTONS
+       =========================== */
+
+    .btn {
+      border-radius: var(--radius);
+      border: 1px solid var(--accent-dark);
+      background: var(--accent-light);
+      color: #1b1030;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.05s;
+    }
+
+    .btn:hover {
+      background: var(--accent-dark);
+      color: #ffffff;
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn-secondary {
+      border-color: var(--border-color);
+      background: #e0e0ea;
+      color: var(--text-main);
+    }
+
+    .btn-secondary:hover {
+      background: #d0d0e0;
+    }
+
+    .btn-danger {
+      border-color: var(--accent-danger);
+      background: #f7d7dd;
+      color: var(--accent-danger);
+    }
+
+    .btn-danger:hover {
+      background: #e9b3bf;
+      color: #5b0010;
+    }
+
+    .btn-small {
+      padding: 0.2rem 0.5rem;
+      font-size: 0.8rem;
+    }
+
+    /* ===========================
+       DRIVER SLOT SCREEN
+       =========================== */
+
+    #driverSlotsView {
+      display: none;
+    }
+
+    .driver-slot-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .driver-slot {
+      background: var(--bg-panel);
+      border-radius: var(--radius);
+      border: 1px solid var(--border-color);
+      padding: 0.75rem;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .driver-slot-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .driver-slot-name {
+      font-weight: 600;
+    }
+
+    .driver-slot-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .driver-slot-actions {
+      display: flex;
+      gap: 0.35rem;
+      margin-top: 0.4rem;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 1rem;
+      color: var(--text-muted);
+    }
+
+    /* ===========================
+       DASHBOARD
+       =========================== */
+
+    #dashboardView {
+      display: none;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 2fr 1.5fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 900px) {
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .stat-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+    }
+
+    .stat-item {
+      min-width: 120px;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .stat-value {
+      font-weight: 600;
+    }
+
+    .current-series {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .current-series strong {
+      font-weight: 600;
+    }
+
+    .offers-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .offer-card {
+      border-radius: var(--radius);
+      border: 1px solid var(--border-color);
+      padding: 0.5rem 0.75rem;
+      background: #ececf5;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      font-size: 0.85rem;
+    }
+
+    .offer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+    }
+
+    .offer-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .offer-actions {
+      margin-top: 0.25rem;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .narrative-panel {
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .narrative-headline {
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .narrative-body p {
+      margin-bottom: 0.25rem;
+    }
+
+    /* ===========================
+       HISTORY TABLE
+       =========================== */
+
+    .history-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+    }
+
+    .history-table th,
+    .history-table td {
+      border: 1px solid var(--border-color);
+      padding: 0.25rem 0.4rem;
+      text-align: left;
+    }
+
+    .history-table th {
+      background: #e0e0f0;
+      font-weight: 600;
+    }
+
+    .history-table tbody tr:nth-child(even) {
+      background: #f4f4fb;
+    }
+
+    /* ===========================
+       MODALS / POPUPS
+       =========================== */
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .modal {
+      background: var(--bg-panel);
+      border-radius: var(--radius);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-soft);
+      max-width: 520px;
+      width: 90%;
+      padding: 1rem;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-title {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .modal-body {
+      font-size: 0.9rem;
+      max-height: 60vh;
+      overflow-y: auto;
+    }
+
+    .modal-footer {
+      margin-top: 0.75rem;
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.5rem;
+    }
+
+    .input-row {
+      margin-bottom: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      font-size: 0.9rem;
+    }
+
+    .input-row label {
+      font-weight: 500;
+    }
+
+    .input-row input,
+    .input-row select {
+      border-radius: var(--radius);
+      border: 1px solid var(--border-color);
+      padding: 0.25rem 0.4rem;
+      font-size: 0.9rem;
+      background: #ffffff;
+    }
+
+    .small-note {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+    <div class="app-container">
+      <div style="text-align:center; margin-bottom:1rem;">
+        <img src="ams2cmbanner.png" alt="AMS2 Contract Manager Banner" style="max-width:100%; height:auto;" />
+      </div>
+      <header class="app-header">
+<!--      <div class="app-logo">AMS2 Contract Manager</div> -->
+      <div class="app-actions">
+        <button id="helpButton" class="btn-secondary btn-small">Help</button>
+      </div>
+    </header>
+
+    <!-- DRIVER SLOTS VIEW -->
+    <section id="driverSlotsView">
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-title">Driver Slots</div>
+          <button id="createDriverButton" class="btn">Create Driver</button>
+        </div>
+        <div id="driverSlotsContainer" class="driver-slot-list"></div>
+        <div id="driverSlotsEmpty" class="empty-state" style="display:none;">
+          No drivers created yet. Click "Create Driver" to begin your career.
+        </div>
+      </div>
+    </section>
+
+    <!-- DASHBOARD VIEW -->
+    <section id="dashboardView">
+      <div class="panel">
+        <div class="panel-header">
+          <div>
+            <div class="panel-title" id="dashboardDriverName"></div>
+            <div class="small-note" id="dashboardYearLabel"></div>
+          </div>
+          <button id="backToSlotsButton" class="btn-secondary btn-small">Back to Drivers</button>
+        </div>
+        <div class="stat-row">
+          <div class="stat-item">
+            <div class="stat-label">License Points (LP)</div>
+            <div class="stat-value" id="statLP">0</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Reputation Points (RP)</div>
+            <div class="stat-value" id="statRP">0</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Total Earnings</div>
+            <div class="stat-value" id="statEarnings">$0</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Bankruptcy Threshold</div>
+            <div class="stat-value" id="statBankrupt">$0</div>
+          </div>
+        </div>
+        <div class="current-series" id="currentSeriesBlock">
+          <!-- Filled by JS -->
+        </div>
+      </div>
+
+      <div class="dashboard-grid">
+        <div>
+          <div class="panel">
+            <div class="panel-header">
+              <div class="panel-title">Season Summary</div>
+            </div>
+            <div id="narrativeContainer" class="narrative-panel">
+              <div class="small-note">Complete a season to see media commentary on your performance.</div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div class="panel-title">Contract Offers</div>
+            </div>
+            <div id="offersContainer">
+              <div class="small-note">After completing a season, contract offers for the next year will appear here.</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="panel">
+            <div class="panel-header">
+              <div class="panel-title">Driver History</div>
+            </div>
+            <div style="max-height: 320px; overflow-y: auto;">
+              <table class="history-table">
+                <thead>
+                  <tr>
+                    <th>Year</th>
+                    <th>Class</th>
+                    <th>Level</th>
+                    <th>Tier</th>
+                    <th>Salary</th>
+                    <th>Finish</th>
+                    <th>Fired</th>
+                  </tr>
+                </thead>
+                <tbody id="historyTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- MODALS -->
+  <div id="modalBackdrop" class="modal-backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title" id="modalTitle"></div>
+        <button id="modalCloseButton" class="btn-secondary btn-small">Close</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+      <div class="modal-footer" id="modalFooter"></div>
+    </div>
+  </div>
+
+  <script>
+    // ===========================
+    // DATA LAYER
+    // ===========================
+
+    const DATA_URLS = {
+      yearList: 'https://raw.githubusercontent.com/your-user/your-repo/main/yearList.json',
+      classList: 'https://raw.githubusercontent.com/your-user/your-repo/main/classList.json',
+      textPrompts: 'https://raw.githubusercontent.com/your-user/your-repo/main/textPrompts.json'
+    };
+
+    const appData = {
+      yearList: [],
+      classList: [],
+      textPrompts: null
+    };
+
+    // ===========================
+    // STATE LAYER
+    // ===========================
+
+    /**
+     * Driver structure (stored in localStorage):
+     * {
+     *   id: string,
+     *   name: string,
+     *   currentYrIndex: number,
+     *   startingYrIndex: number,
+     *   bankruptLevel: number,
+     *   lp: number,
+     *   rp: number,
+     *   earnings: number,
+     *   seasonsCompleted: number,
+     *   activeContract: {
+     *     classID,
+     *     className,
+     *     level,
+     *     tier,
+     *     salaryPerSeason,
+     *     yearsRemaining
+     *   } | null,
+     *   history: [
+     *     {
+     *       yrIndex,
+     *       yearName,
+     *       className,
+     *       level,
+     *       tier,
+     *       salary,
+     *       finish,
+     *       fired
+     *     }
+     *   ]
+     * }
+     */
+
+    const STORAGE_KEY = 'ams2ContractManagerDrivers';
+
+    const appState = {
+      drivers: [],
+      activeDriverId: null
+    };
+
+    function loadDriversFromStorage() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) {
+          appState.drivers = [];
+          return;
+        }
+        appState.drivers = JSON.parse(raw);
+      } catch (e) {
+        console.error('Error loading drivers', e);
+        appState.drivers = [];
+      }
+    }
+
+    function saveDriversToStorage() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(appState.drivers));
+    }
+
+    function getActiveDriver() {
+      return appState.drivers.find(d => d.id === appState.activeDriverId) || null;
+    }
+
+    function updateActiveDriver(updated) {
+      const idx = appState.drivers.findIndex(d => d.id === updated.id);
+      if (idx >= 0) {
+        appState.drivers[idx] = updated;
+        saveDriversToStorage();
+      }
+    }
+
+    // ===========================
+    // UTILS
+    // ===========================
+
+    function formatMoney(value) {
+      const sign = value < 0 ? '-' : '';
+      const abs = Math.abs(value);
+      return sign + '$' + abs.toLocaleString();
+    }
+
+    function randomChoice(arr) {
+      if (!arr || arr.length === 0) return null;
+      const idx = Math.floor(Math.random() * arr.length);
+      return arr[idx];
+    }
+
+    function getYearByIndex(yrIndex) {
+      return appData.yearList.find(y => y.YrIndex === yrIndex) || null;
+    }
+
+    function getClassById(classID) {
+      return appData.classList.find(c => c.ClassID === classID) || null;
+    }
+
+    function classifyIdentity(className) {
+      const name = className.toLowerCase();
+      if (name.includes('formula')) return 'formula';
+      if (name.includes('gt')) return 'gt';
+      if (name.includes('stock')) return 'stock';
+      if (name.includes('vintage') || name.includes('retro') || name.includes('classic')) return 'vintage';
+      return 'formula'; // default
+    }
+
+    // ===========================
+    // INITIAL LOAD
+    // ===========================
+
+    async function loadAllData() {
+      const [yearRes, classRes, textRes] = await Promise.all([
+        fetch("https://rsr427.github.io/AMS2ContractManager/yearList.json"),
+        fetch("https://rsr427.github.io/AMS2ContractManager/classList.json"),
+        fetch("https://rsr427.github.io/AMS2ContractManager/textPrompts.json")
+      ]);
+
+      appData.yearList = await yearRes.json();
+      appData.classList = await classRes.json();
+      appData.textPrompts = await textRes.json();
+    }
+
+    // ===========================
+    // UI: MODAL
+    // ===========================
+
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const modalTitleEl = document.getElementById('modalTitle');
+    const modalBodyEl = document.getElementById('modalBody');
+    const modalFooterEl = document.getElementById('modalFooter');
+    const modalCloseButton = document.getElementById('modalCloseButton');
+
+    function showModal(title, bodyHTML, footerButtons = []) {
+      modalTitleEl.textContent = title;
+      modalBodyEl.innerHTML = bodyHTML;
+      modalFooterEl.innerHTML = '';
+      footerButtons.forEach(btn => {
+        const b = document.createElement('button');
+        b.textContent = btn.label;
+        b.className = btn.className || 'btn';
+        b.addEventListener('click', () => {
+          if (btn.onClick) btn.onClick();
+        });
+        modalFooterEl.appendChild(b);
+      });
+      modalBackdrop.style.display = 'flex';
+    }
+
+    function closeModal() {
+      modalBackdrop.style.display = 'none';
+    }
+
+    modalCloseButton.addEventListener('click', closeModal);
+    modalBackdrop.addEventListener('click', (e) => {
+      if (e.target === modalBackdrop) {
+        closeModal();
+      }
+    });
+
+    // ===========================
+    // UI: VIEWS
+    // ===========================
+
+    const driverSlotsView = document.getElementById('driverSlotsView');
+    const dashboardView = document.getElementById('dashboardView');
+
+    function showDriverSlotsView() {
+      driverSlotsView.style.display = 'block';
+      dashboardView.style.display = 'none';
+      renderDriverSlots();
+    }
+
+    function showDashboardView() {
+      driverSlotsView.style.display = 'none';
+      dashboardView.style.display = 'block';
+      renderDashboard();
+    }
+
+    // ===========================
+    // UI: DRIVER SLOTS
+    // ===========================
+
+    const driverSlotsContainer = document.getElementById('driverSlotsContainer');
+    const driverSlotsEmpty = document.getElementById('driverSlotsEmpty');
+    const createDriverButton = document.getElementById('createDriverButton');
+    const backToSlotsButton = document.getElementById('backToSlotsButton');
+
+    function renderDriverSlots() {
+      driverSlotsContainer.innerHTML = '';
+      if (appState.drivers.length === 0) {
+        driverSlotsEmpty.style.display = 'block';
+        return;
+      }
+      driverSlotsEmpty.style.display = 'none';
+
+      appState.drivers.forEach(driver => {
+        const yearObj = getYearByIndex(driver.currentYrIndex);
+        const currentYearName = yearObj ? yearObj.FullYearName : 'Unknown Year';
+        const slot = document.createElement('div');
+        slot.className = 'driver-slot';
+
+        const header = document.createElement('div');
+        header.className = 'driver-slot-header';
+
+        const nameEl = document.createElement('div');
+        nameEl.className = 'driver-slot-name';
+        nameEl.textContent = driver.name;
+
+        const metaEl = document.createElement('div');
+        metaEl.className = 'driver-slot-meta';
+        metaEl.textContent = `${currentYearName} • LP ${driver.lp} • RP ${driver.rp} • ${formatMoney(driver.earnings)}`;
+
+        header.appendChild(nameEl);
+        header.appendChild(metaEl);
+
+        const seriesEl = document.createElement('div');
+        seriesEl.className = 'driver-slot-meta';
+        if (driver.activeContract) {
+          seriesEl.textContent = `Current: ${driver.activeContract.className} (Level ${driver.activeContract.level})`;
+        } else {
+          seriesEl.textContent = 'No active contract';
+        }
+
+        const actions = document.createElement('div');
+        actions.className = 'driver-slot-actions';
+
+        const continueBtn = document.createElement('button');
+        continueBtn.className = 'btn btn-small';
+        continueBtn.textContent = 'Continue';
+        continueBtn.addEventListener('click', () => {
+          appState.activeDriverId = driver.id;
+          showDashboardView();
+        });
+
+        const editBtn = document.createElement('button');
+        editBtn.className = 'btn-secondary btn-small';
+        editBtn.textContent = 'Edit';
+        editBtn.addEventListener('click', () => {
+          showEditDriverModal(driver);
+        });
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'btn-danger btn-small';
+        deleteBtn.textContent = 'Delete';
+        deleteBtn.addEventListener('click', () => {
+          showDeleteDriverConfirm(driver);
+        });
+
+        actions.appendChild(continueBtn);
+        actions.appendChild(editBtn);
+        actions.appendChild(deleteBtn);
+
+        slot.appendChild(header);
+        slot.appendChild(seriesEl);
+        slot.appendChild(actions);
+
+        driverSlotsContainer.appendChild(slot);
+      });
+    }
+
+    function showCreateDriverModal() {
+      const startingYears = appData.yearList.filter(y => y.startingYear === 1);
+      let bodyHTML = `
+        <div class="input-row">
+          <label for="newDriverName">Driver Name</label>
+          <input id="newDriverName" type="text" placeholder="Enter driver name" />
+        </div>
+        <div class="input-row">
+          <label for="newDriverStartYear">Starting Year</label>
+          <select id="newDriverStartYear">
+            ${startingYears.map(y => `<option value="${y.YrIndex}">${y.FullYearName}</option>`).join('')}
+          </select>
+          <div class="small-note">Choose the era in which your career begins.</div>
+        </div>
+      `;
+      showModal('Create Driver', bodyHTML, [
+        {
+          label: 'Cancel',
+          className: 'btn-secondary',
+          onClick: closeModal
+        },
+        {
+          label: 'Create',
+          className: 'btn',
+          onClick: () => {
+            const nameInput = document.getElementById('newDriverName');
+            const yearSelect = document.getElementById('newDriverStartYear');
+            const name = nameInput.value.trim() || 'New Driver';
+            const yrIndex = parseInt(yearSelect.value, 10);
+            const yearObj = getYearByIndex(yrIndex);
+            const bankruptLevel = yearObj ? Number(yearObj.bankruptLevel) : -250000;
+
+            const newDriver = {
+              id: 'drv_' + Date.now(),
+              name,
+              currentYrIndex: yrIndex,
+              startingYrIndex: yrIndex,
+              bankruptLevel,
+              lp: 0,
+              rp: 0,
+              earnings: 0,
+              seasonsCompleted: 0,
+              activeContract: null,
+              history: []
+            };
+
+            appState.drivers.push(newDriver);
+            saveDriversToStorage();
+            closeModal();
+            renderDriverSlots();
+          }
+        }
+      ]);
+    }
+
+    function showEditDriverModal(driver) {
+      const bodyHTML = `
+        <div class="input-row">
+          <label for="editDriverName">Driver Name</label>
+          <input id="editDriverName" type="text" value="${driver.name}" />
+        </div>
+      `;
+      showModal('Edit Driver', bodyHTML, [
+        {
+          label: 'Cancel',
+          className: 'btn-secondary',
+          onClick: closeModal
+        },
+        {
+          label: 'Save',
+          className: 'btn',
+          onClick: () => {
+            const nameInput = document.getElementById('editDriverName');
+            driver.name = nameInput.value.trim() || driver.name;
+            updateActiveDriver(driver);
+            closeModal();
+            renderDriverSlots();
+            if (appState.activeDriverId === driver.id) {
+              renderDashboard();
+            }
+          }
+        }
+      ]);
+    }
+
+    function showDeleteDriverConfirm(driver) {
+      const bodyHTML = `
+        <p>Are you sure you want to delete <strong>${driver.name}</strong> and their entire career history?</p>
+      `;
+      showModal('Delete Driver', bodyHTML, [
+        {
+          label: 'Cancel',
+          className: 'btn-secondary',
+          onClick: closeModal
+        },
+        {
+          label: 'Delete',
+          className: 'btn-danger',
+          onClick: () => {
+            appState.drivers = appState.drivers.filter(d => d.id !== driver.id);
+            if (appState.activeDriverId === driver.id) {
+              appState.activeDriverId = null;
+            }
+            saveDriversToStorage();
+            closeModal();
+            showDriverSlotsView();
+          }
+        }
+      ]);
+    }
+
+    createDriverButton.addEventListener('click', showCreateDriverModal);
+    backToSlotsButton.addEventListener('click', showDriverSlotsView);
+
+    // ===========================
+    // UI: DASHBOARD
+    // ===========================
+
+    const dashboardDriverName = document.getElementById('dashboardDriverName');
+    const dashboardYearLabel = document.getElementById('dashboardYearLabel');
+    const statLP = document.getElementById('statLP');
+    const statRP = document.getElementById('statRP');
+    const statEarnings = document.getElementById('statEarnings');
+    const statBankrupt = document.getElementById('statBankrupt');
+    const currentSeriesBlock = document.getElementById('currentSeriesBlock');
+    const historyTableBody = document.getElementById('historyTableBody');
+    const narrativeContainer = document.getElementById('narrativeContainer');
+    const offersContainer = document.getElementById('offersContainer');
+
+    function renderDashboard() {
+      const driver = getActiveDriver();
+      if (!driver) {
+        showDriverSlotsView();
+        return;
+      }
+
+      const yearObj = getYearByIndex(driver.currentYrIndex);
+      const yearName = yearObj ? yearObj.FullYearName : 'Unknown Year';
+
+      dashboardDriverName.textContent = driver.name;
+      dashboardYearLabel.textContent = `Year: ${yearName}`;
+      statLP.textContent = driver.lp;
+      statRP.textContent = driver.rp;
+      statEarnings.textContent = formatMoney(driver.earnings);
+      statBankrupt.textContent = formatMoney(driver.bankruptLevel);
+
+      // Current series block
+      if (driver.activeContract) {
+        const c = driver.activeContract;
+      currentSeriesBlock.innerHTML = `
+        <div><strong>Active Series:</strong> ${c.className} (Level ${c.level}, Tier ${c.tier})</div>
+        <div class="small-note" style="margin-top:4px; font-style:italic;">
+          ${getClassById(c.classID)?.ScheduleNote || ""}
+        </div>
+        <div class="small-note" style="margin-top:6px;">
+          Contract: ${c.yearsRemaining} season(s) remaining • Salary: ${formatMoney(c.salaryPerSeason)} per season
+        </div>
+        <button id="enterResultButton" class="btn btn-small" style="margin-top:0.5rem;">Enter Championship Result</button>
+      `;
+        document.getElementById('enterResultButton').addEventListener('click', () => {
+          showEnterResultModal(driver);
+        });
+      } else {
+        if (driver.careerComplete) {
+          currentSeriesBlock.innerHTML = `
+            <div><strong>No active contract.</strong></div>
+            <div class="small-note" style="margin-top:0.5rem; font-style:italic;">
+              Career complete — no further contracts available.
+            </div>
+          `;
+        } else {
+          currentSeriesBlock.innerHTML = `
+            <div><strong>No active contract.</strong></div>
+            <button id="selectSeriesButton" class="btn btn-small" style="margin-top:0.5rem;">Select a Series</button>
+          `;
+
+          // Only attach listener when the button exists
+          document.getElementById('selectSeriesButton').addEventListener('click', () => {
+            generateAndShowOffers(driver);
+          });
+        }
+      }
+
+      // History
+      historyTableBody.innerHTML = '';
+      driver.history.forEach(row => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${row.yearName}</td>
+          <td>${row.className}</td>
+          <td>${row.level}</td>
+          <td>${row.tier}</td>
+          <td>${formatMoney(row.salary)}</td>
+          <td>${row.finish}</td>
+          <td>${row.fired ? 'Yes' : 'No'}</td>
+        `;
+        historyTableBody.appendChild(tr);
+      });
+
+      // Narrative
+      if (driver.history.length === 0) {
+        narrativeContainer.innerHTML = '<div class="small-note">Complete a season to see media commentary on your performance.</div>';
+      }
+
+      // Offers
+      if (!driver.activeContract && driver.seasonsCompleted > 0) {
+        generateAndShowOffers(driver);
+      } else if (driver.activeContract) {
+        offersContainer.innerHTML = '<div class="small-note">Complete your current season to see new contract offers.</div>';
+      }
+    }
+
+    // ===========================
+    // SEASON RESULT ENTRY
+    // ===========================
+
+    function showEnterResultModal(driver) {
+      const bodyHTML = `
+        <div class="input-row">
+          <label for="finishPositionInput">Championship Finish Position</label>
+          <input id="finishPositionInput" type="number" min="1" max="40" value="1" />
+          <div class="small-note">Enter your final position in the season standings.</div>
+        </div>
+      `;
+      showModal('Enter Championship Result', bodyHTML, [
+        {
+          label: 'Cancel',
+          className: 'btn-secondary',
+          onClick: closeModal
+        },
+        {
+          label: 'Submit',
+          className: 'btn',
+          onClick: () => {
+            const input = document.getElementById('finishPositionInput');
+            const finish = Math.max(1, parseInt(input.value, 10) || 1);
+            closeModal();
+            processSeasonResult(driver, finish);
+          }
+        }
+      ]);
+    }
+
+    function processSeasonResult(driver, finish) {
+      const contract = driver.activeContract;
+      if (!contract) return;
+
+      // RP change
+      let rpDelta = 0;
+      if (finish === 1) rpDelta = 3;
+      else if (finish >= 2 && finish <= 4) rpDelta = 2;
+      else if (finish >= 5 && finish <= 7) rpDelta = 1;
+      else if (finish >= 11) rpDelta = -1;
+
+      driver.rp = Math.max(0, driver.rp + rpDelta);
+
+      // Salary for this season
+      const salary = contract.salaryPerSeason;
+      driver.earnings += salary;
+
+      // Determine if fired (Tier 1–2, Level 3+)
+      let fired = false;
+      if (contract.level >= 3 && (contract.tier === 1 || contract.tier === 2)) {
+        fired = evaluateFiring(contract.tier, finish);
+      }
+
+      // Add history row
+      const yearObj = getYearByIndex(driver.currentYrIndex);
+      const yearName = yearObj ? yearObj.FullYearName : 'Unknown Year';
+
+      driver.history.push({
+        yrIndex: driver.currentYrIndex,
+        yearName,
+        className: contract.className,
+        level: contract.level,
+        tier: contract.tier,
+        salary,
+        finish,
+        fired
+      });
+
+      // LP gain
+      driver.lp += 1;
+      driver.seasonsCompleted += 1;
+
+      // Build narrative
+      const narrative = buildSeasonNarrative(driver, {
+        finish,
+        rpDelta,
+        salary,
+        fired,
+        contract
+      });
+      renderNarrative(narrative);
+
+      // Career end check
+      if (driver.seasonsCompleted >= 18) {
+        // Final year: no new offers, show career end popup
+        driver.activeContract = null;
+        driver.careerComplete = true
+        updateActiveDriver(driver);
+        showCareerEndPopup(driver);
+        renderDashboard();
+        return;
+      }
+
+      // Advance year
+      driver.currentYrIndex = Math.min(driver.currentYrIndex + 1, appData.yearList[appData.yearList.length - 1].YrIndex);
+
+      // Contract handling
+      if (fired) {
+        // Fired after salary awarded
+        driver.activeContract = null;
+        updateActiveDriver(driver);
+        showFiredPopup(driver);
+      } else {
+        // Not fired
+        if (contract.yearsRemaining > 1) {
+          contract.yearsRemaining -= 1;
+          driver.activeContract = contract;
+        } else {
+          driver.activeContract = null;
+        }
+        updateActiveDriver(driver);
+      }
+
+      renderDashboard();
+    }
+
+    function evaluateFiring(tier, finish) {
+      if (tier === 1) {
+        if (finish >= 11) return true;
+        if (finish >= 8) return Math.random() < 0.5;
+        return false;
+      }
+      if (tier === 2) {
+        if (finish >= 11) return Math.random() < 0.75;
+        if (finish >= 8) return Math.random() < 0.25;
+        return false;
+      }
+      return false;
+    }
+
+    function showFiredPopup(driver) {
+      const bodyHTML = `
+        <p>Your contract has been terminated due to missing performance thresholds.</p>
+        <p>You will need to secure a new drive for next season.</p>
+      `;
+      showModal('Contract Terminated', bodyHTML, [
+        {
+          label: 'OK',
+          className: 'btn',
+          onClick: closeModal
+        }
+      ]);
+    }
+
+    function showCareerEndPopup(driver) {
+      const prompts = appData.textPrompts.careerEnd || {
+        headline: `${driver.name} Concludes an 18-Year Career`,
+        commentary: [
+          'After nearly two decades of competition, your journey through the world of motorsport comes to a close.',
+          'Your career featured triumphs, challenges, and defining moments that shaped your legacy.',
+          `You retire with total earnings of ${formatMoney(driver.earnings)}, marking the final chapter of your racing story.`
+        ]
+      };
+
+      const bodyHTML = `
+        <p>${prompts.commentary[0]}</p>
+        <p>${prompts.commentary[1]}</p>
+        <p>${prompts.commentary[2].replace('$<Earnings>', formatMoney(driver.earnings))}</p>
+      `;
+      showModal(prompts.headline.replace('<Driver>', driver.name), bodyHTML, [
+        {
+          label: 'OK',
+          className: 'btn',
+          onClick: closeModal
+        }
+      ]);
+    }
+
+    // ===========================
+    // CONTRACT OFFER GENERATION
+    // ===========================
+
+    function generateAndShowOffers(driver) {
+      const nextYrIndex = driver.currentYrIndex;
+
+      if (driver.careerComplete) {
+        offersContainer.innerHTML = `
+          <div class="small-note">This driver has completed their career.</div>
+        `;
+        return;
+      }
+
+      let eligibleClasses = appData.classList.filter(c =>
+        c.firstYear <= nextYrIndex &&
+        c.lastYear >= nextYrIndex &&
+        driver.lp >= c.minLP
+      );
+
+      const lastHistory = driver.history?.[driver.history.length - 1];
+      const lastLevel = lastHistory ? lastHistory.level : null;
+
+      if (lastLevel !== null) {
+        eligibleClasses = eligibleClasses.filter(c =>
+          Math.abs(c.Level - lastLevel) <= 1
+        );
+      }
+
+      if (eligibleClasses.length === 0) {
+        offersContainer.innerHTML = '<div class="small-note">No eligible series available for this year.</div>';
+        return;
+      }
+
+      // Build offers with tier & salary
+      const offers = eligibleClasses.map(c => {
+        const tier = determineTierForRP(driver.rp, c);
+        const salary = c[`Tier${tier}`];
+        const isPayDriver = salary < 0;
+        let years = 1;
+        if (c.Level >= 3 && salary > 0) {
+          years = 1 + Math.floor(Math.random() * 3); // 1–3
+        }
+        return {
+          classID: c.ClassID,
+          className: c.Class,
+          level: c.Level,
+          tier,
+          salaryPerSeason: salary,
+          years,
+          isPayDriver,
+          scheduleNote: c.ScheduleNote 
+        };
+      });
+
+      // Randomly pick up to 5 offers
+      const shuffled = [...offers].sort(() => Math.random() - 0.5);
+      const selected = shuffled.slice(0, 5);
+
+      renderOffers(driver, selected);
+    }
+
+    function determineTierForRP(rp, c) {
+      if (rp >= c.rpTier1) return 1;
+      if (rp >= c.rpTier2) return 2;
+      if (rp >= c.rpTier3) return 3;
+      if (rp >= c.rpTier4) return 4;
+      return 4;
+    }
+
+    function renderOffers(driver, offers) {
+      if (!offers || offers.length === 0) {
+        offersContainer.innerHTML = '<div class="small-note">No contract offers available.</div>';
+        return;
+      }
+
+      offersContainer.innerHTML = '';
+      const list = document.createElement('div');
+      list.className = 'offers-list';
+
+      offers.forEach(offer => {
+        const card = document.createElement('div');
+        card.className = 'offer-card';
+
+        const header = document.createElement('div');
+        header.className = 'offer-header';
+        header.innerHTML = `
+          <span>${offer.className} (Level ${offer.level})</span>
+          <span>Tier ${offer.tier}</span>
+        `;
+
+        const meta = document.createElement('div');
+        meta.className = 'offer-meta';
+        meta.innerHTML = `
+          <span>Salary: ${formatMoney(offer.salaryPerSeason)} / season</span>
+          <span>Length: ${offer.years} season(s)</span>
+          <span>${offer.isPayDriver ? 'Pay Driver Contract' : 'Paid Seat'}</span>
+          <div style="flex-basis: 100%; margin-top:4px; font-style:italic;">
+            ${offer.scheduleNote}
+          </div>
+        `;
+
+        const actions = document.createElement('div');
+        actions.className = 'offer-actions';
+
+        const acceptBtn = document.createElement('button');
+        acceptBtn.className = 'btn btn-small';
+        acceptBtn.textContent = 'Sign Contract';
+        acceptBtn.addEventListener('click', () => {
+          signContract(driver, offer);
+        });
+
+        actions.appendChild(acceptBtn);
+
+        card.appendChild(header);
+        card.appendChild(meta);
+        card.appendChild(actions);
+
+        list.appendChild(card);
+      });
+
+      offersContainer.appendChild(list);
+    }
+
+    function signContract(driver, offer) {
+      const previousContract = driver.activeContract;
+      const previousLevel = previousContract ? previousContract.level : offer.level;
+
+      driver.activeContract = {
+        classID: offer.classID,
+        className: offer.className,
+        level: offer.level,
+        tier: offer.tier,
+        salaryPerSeason: offer.salaryPerSeason,
+        yearsRemaining: offer.years
+      };
+
+      updateActiveDriver(driver);
+      renderDashboard();
+
+      // Promotion popup if level increased
+      if (offer.level > previousLevel) {
+        showPromotionPopup(driver);
+      }
+    }
+
+    function showPromotionPopup(driver) {
+      const prompts = appData.textPrompts.promotionPopups;
+      const headline = randomChoice(prompts.headlines) || '<Driver> Secures Breakthrough Opportunity!';
+      const commentary = randomChoice(prompts.commentary) || 'This contract marks a major milestone in your career and opens the door to higher expectations.';
+
+      const bodyHTML = `
+        <p>${commentary}</p>
+      `;
+      showModal(headline.replace('<Driver>', driver.name), bodyHTML, [
+        {
+          label: 'OK',
+          className: 'btn',
+          onClick: closeModal
+        }
+      ]);
+    }
+
+    // ===========================
+    // NARRATIVE GENERATION
+    // ===========================
+
+    function buildSeasonNarrative(driver, context) {
+      const prompts = appData.textPrompts;
+      const { finish, rpDelta, salary, fired, contract } = context;
+
+      // Headline category
+      let headlineCategory = 'mixed';
+
+      if (finish === 1) {
+        headlineCategory = 'championship';
+      } else if (fired) {
+        headlineCategory = 'contractDrama';
+      } else if (driver.earnings <= driver.bankruptLevel + 50000) {
+        headlineCategory = 'financial';
+      } else if (rpDelta > 0 || finish <= 7) {
+        headlineCategory = 'progress';
+      } else if (finish >= 11 || rpDelta < 0) {
+        headlineCategory = 'struggles';
+      }
+
+      const headlineList = prompts.headlines[headlineCategory] || prompts.headlines.mixed;
+      const headline = (randomChoice(headlineList) || '<Driver> Season Summary').replace('<Driver>', driver.name);
+
+      // Commentary modules
+      const commentaryLines = [];
+
+      // Performance
+      let perfKey = 'mixed';
+      if (finish === 1) perfKey = 'strong';
+      else if (finish >= 2 && finish <= 4) perfKey = 'strong';
+      else if (finish >= 5 && finish <= 7) perfKey = 'improving';
+      else if (finish >= 8 && finish <= 10) perfKey = 'mixed';
+      else if (finish >= 11) perfKey = 'poor';
+
+      const perfList = prompts.commentary.performance[perfKey];
+      if (perfList) commentaryLines.push(randomChoice(perfList));
+
+      // Contract
+      let contractKey = null;
+      if (fired) contractKey = 'fired';
+      else if (contract.yearsRemaining > 1) contractKey = 'multiYear';
+      else contractKey = 'expiring';
+
+      const contractList = prompts.commentary.contract[contractKey];
+      if (contractList) commentaryLines.push(randomChoice(contractList));
+
+      // Financial
+      const financialKey = driver.earnings > driver.bankruptLevel + 50000 ? 'stable' : 'tight';
+      const financialList = prompts.commentary.financial[financialKey];
+      if (financialList) commentaryLines.push(randomChoice(financialList));
+
+      // Progression
+      const progressionKey = rpDelta > 0 ? 'upward' : (rpDelta < 0 ? 'downward' : 'stalled');
+      const progressionList = prompts.commentary.progression[progressionKey];
+      if (progressionList) commentaryLines.push(randomChoice(progressionList));
+
+      // Identity
+      const identityKey = classifyIdentity(contract.className);
+      const identityList = prompts.commentary.identity[identityKey];
+      if (identityList) commentaryLines.push(randomChoice(identityList));
+
+      // Limit to 3 lines for readability
+      const finalLines = commentaryLines.filter(Boolean).slice(0, 3);
+
+      return {
+        headline,
+        lines: finalLines
+      };
+    }
+
+    function renderNarrative(narrative) {
+      if (!narrative) return;
+      narrativeContainer.innerHTML = `
+        <div class="narrative-headline">${narrative.headline}</div>
+        <div class="narrative-body">
+          ${narrative.lines.map(line => `<p>${line}</p>`).join('')}
+        </div>
+      `;
+    }
+
+    // ===========================
+    // HELP POPUP
+    // ===========================
+
+    const helpButton = document.getElementById('helpButton');
+
+    function showHelpPopup() {
+      const help = appData.textPrompts.helpScreen;
+      const title = help.title || 'AMS2 Contract Manager – Help';
+      const bodyHTML = help.body.map(p => `<p>${p}</p>`).join('');
+      showModal(title, bodyHTML, [
+        {
+          label: 'Close',
+          className: 'btn',
+          onClick: closeModal
+        }
+      ]);
+    }
+
+    helpButton.addEventListener('click', showHelpPopup);
+
+    // ===========================
+    // APP INIT
+    // ===========================
+
+    (async function init() {
+      loadDriversFromStorage();
+      await loadAllData();
+      showDriverSlotsView();
+    })();
+  </script>
+</body>
+</html>
