@@ -1,0 +1,410 @@
+[
+  {
+    "YrIndex": 1,
+    "Epoch": "60's Gen 1",
+    "Year": 1,
+    "FullYearName": "60's Gen 1 - Year 1",
+    "startingYear": 1,
+    "bankruptLevel": -250000
+  },
+  {
+    "YrIndex": 2,
+    "Epoch": "60's Gen 1",
+    "Year": 2,
+    "FullYearName": "60's Gen 1 - Year 2",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  },
+  {
+    "YrIndex": 3,
+    "Epoch": "60's Gen 1",
+    "Year": 3,
+    "FullYearName": "60's Gen 1 - Year 3",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  },
+  {
+    "YrIndex": 4,
+    "Epoch": "60's Gen 2",
+    "Year": 1,
+    "FullYearName": "60's Gen 2 - Year 1",
+    "startingYear": 1,
+    "bankruptLevel": -500000
+  },
+  {
+    "YrIndex": 5,
+    "Epoch": "60's Gen 2",
+    "Year": 2,
+    "FullYearName": "60's Gen 2 - Year 2",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  },
+  {
+    "YrIndex": 6,
+    "Epoch": "60's Gen 2",
+    "Year": 3,
+    "FullYearName": "60's Gen 2 - Year 3",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  },
+  {
+    "YrIndex": 7,
+    "Epoch": "70's Gen 1",
+    "Year": 1,
+    "FullYearName": "70's Gen 1 - Year 1",
+    "startingYear": 1,
+    "bankruptLevel": -1000000
+  },
+  {
+    "YrIndex": 8,
+    "Epoch": "70's Gen 1",
+    "Year": 2,
+    "FullYearName": "70's Gen 1 - Year 2",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  },
+  {
+    "YrIndex": 9,
+    "Epoch": "70's Gen 1",
+    "Year": 3,
+    "FullYearName": "70's Gen 1 - Year 3",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  },
+  {
+    "YrIndex": 10,
+    "Epoch": "70's Gen 2",
+    "Year": 1,
+    "FullYearName": "70's Gen 2 - Year 1",
+    "startingYear": 1,
+    "bankruptLevel": -1500000
+  },
+  {
+    "YrIndex": 11,
+    "Epoch": "70's Gen 2",
+    "Year": 2,
+    "FullYearName": "70's Gen 2 - Year 2",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  },
+  {
+    "YrIndex": 12,
+    "Epoch": "70's Gen 2",
+    "Year": 3,
+    "FullYearName": "70's Gen 2 - Year 3",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  },
+  {
+    "YrIndex": 13,
+    "Epoch": "70's Gen 3",
+    "Year": 1,
+    "FullYearName": "70's Gen 3 - Year 1",
+    "startingYear": 1,
+    "bankruptLevel": -1500000
+  },
+  {
+    "YrIndex": 14,
+    "Epoch": "70's Gen 3",
+    "Year": 2,
+    "FullYearName": "70's Gen 3 - Year 2",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  },
+  {
+    "YrIndex": 15,
+    "Epoch": "70's Gen 3",
+    "Year": 3,
+    "FullYearName": "70's Gen 3 - Year 3",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  },
+  {
+    "YrIndex": 16,
+    "Epoch": "80's Gen 1",
+    "Year": 1,
+    "FullYearName": "80's Gen 1 - Year 1",
+    "startingYear": 1,
+    "bankruptLevel": -2500000
+  },
+  {
+    "YrIndex": 17,
+    "Epoch": "80's Gen 1",
+    "Year": 2,
+    "FullYearName": "80's Gen 1 - Year 2",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  },
+  {
+    "YrIndex": 18,
+    "Epoch": "80's Gen 1",
+    "Year": 3,
+    "FullYearName": "80's Gen 1 - Year 3",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  },
+  {
+    "YrIndex": 19,
+    "Epoch": "80's Gen 2",
+    "Year": 1,
+    "FullYearName": "80's Gen 2 - Year 1",
+    "startingYear": 1,
+    "bankruptLevel": -3000000
+  },
+  {
+    "YrIndex": 20,
+    "Epoch": "80's Gen 2",
+    "Year": 2,
+    "FullYearName": "80's Gen 2 - Year 2",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  },
+  {
+    "YrIndex": 21,
+    "Epoch": "80's Gen 2",
+    "Year": 3,
+    "FullYearName": "80's Gen 2 - Year 3",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  },
+  {
+    "YrIndex": 22,
+    "Epoch": "80's Gen 3",
+    "Year": 1,
+    "FullYearName": "80's Gen 3 - Year 1",
+    "startingYear": 1,
+    "bankruptLevel": -3000000
+  },
+  {
+    "YrIndex": 23,
+    "Epoch": "80's Gen 3",
+    "Year": 2,
+    "FullYearName": "80's Gen 3 - Year 2",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  },
+  {
+    "YrIndex": 24,
+    "Epoch": "80's Gen 3",
+    "Year": 3,
+    "FullYearName": "80's Gen 3 - Year 3",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  },
+  {
+    "YrIndex": 25,
+    "Epoch": "90's Gen 1",
+    "Year": 1,
+    "FullYearName": "90's Gen 1 - Year 1",
+    "startingYear": 1,
+    "bankruptLevel": -5000000
+  },
+  {
+    "YrIndex": 26,
+    "Epoch": "90's Gen 1",
+    "Year": 2,
+    "FullYearName": "90's Gen 1 - Year 2",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  },
+  {
+    "YrIndex": 27,
+    "Epoch": "90's Gen 1",
+    "Year": 3,
+    "FullYearName": "90's Gen 1 - Year 3",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  },
+  {
+    "YrIndex": 28,
+    "Epoch": "90's Gen 2",
+    "Year": 1,
+    "FullYearName": "90's Gen 2 - Year 1",
+    "startingYear": 1,
+    "bankruptLevel": -5000000
+  },
+  {
+    "YrIndex": 29,
+    "Epoch": "90's Gen 2",
+    "Year": 2,
+    "FullYearName": "90's Gen 2 - Year 2",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  },
+  {
+    "YrIndex": 30,
+    "Epoch": "90's Gen 2",
+    "Year": 3,
+    "FullYearName": "90's Gen 2 - Year 3",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  },
+  {
+    "YrIndex": 31,
+    "Epoch": "90's Gen 3",
+    "Year": 1,
+    "FullYearName": "90's Gen 3 - Year 1",
+    "startingYear": 1,
+    "bankruptLevel": -5000000
+  },
+  {
+    "YrIndex": 32,
+    "Epoch": "90's Gen 3",
+    "Year": 2,
+    "FullYearName": "90's Gen 3 - Year 2",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  },
+  {
+    "YrIndex": 33,
+    "Epoch": "90's Gen 3",
+    "Year": 3,
+    "FullYearName": "90's Gen 3 - Year 3",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  },
+  {
+    "YrIndex": 34,
+    "Epoch": "90's Gen 4",
+    "Year": 1,
+    "FullYearName": "90's Gen 4 - Year 1",
+    "startingYear": 1,
+    "bankruptLevel": -8000000
+  },
+  {
+    "YrIndex": 35,
+    "Epoch": "90's Gen 4",
+    "Year": 2,
+    "FullYearName": "90's Gen 4 - Year 2",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  },
+  {
+    "YrIndex": 36,
+    "Epoch": "90's Gen 4",
+    "Year": 3,
+    "FullYearName": "90's Gen 4 - Year 3",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  },
+  {
+    "YrIndex": 37,
+    "Epoch": "00's Gen 1",
+    "Year": 1,
+    "FullYearName": "00's Gen 1 - Year 1",
+    "startingYear": 1,
+    "bankruptLevel": -8000000
+  },
+  {
+    "YrIndex": 38,
+    "Epoch": "00's Gen 1",
+    "Year": 2,
+    "FullYearName": "00's Gen 1 - Year 2",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  },
+  {
+    "YrIndex": 39,
+    "Epoch": "00's Gen 1",
+    "Year": 3,
+    "FullYearName": "00's Gen 1 - Year 3",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  },
+  {
+    "YrIndex": 40,
+    "Epoch": "00's Gen 1",
+    "Year": 1,
+    "FullYearName": "00's Gen 1 - Year 1",
+    "startingYear": 1,
+    "bankruptLevel": -10000000
+  },
+  {
+    "YrIndex": 41,
+    "Epoch": "00's Gen 1",
+    "Year": 2,
+    "FullYearName": "00's Gen 1 - Year 2",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  },
+  {
+    "YrIndex": 42,
+    "Epoch": "00's Gen 1",
+    "Year": 3,
+    "FullYearName": "00's Gen 1 - Year 3",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  },
+  {
+    "YrIndex": 43,
+    "Epoch": "00's Gen 2",
+    "Year": 1,
+    "FullYearName": "00's Gen 2 - Year 1",
+    "startingYear": 1,
+    "bankruptLevel": -10000000
+  },
+  {
+    "YrIndex": 44,
+    "Epoch": "00's Gen 2",
+    "Year": 2,
+    "FullYearName": "00's Gen 2 - Year 2",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  },
+  {
+    "YrIndex": 45,
+    "Epoch": "00's Gen 2",
+    "Year": 3,
+    "FullYearName": "00's Gen 2 - Year 3",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  },
+  {
+    "YrIndex": 46,
+    "Epoch": "10's Gen 1",
+    "Year": 1,
+    "FullYearName": "10's Gen 1 - Year 1",
+    "startingYear": 1,
+    "bankruptLevel": -10000000
+  },
+  {
+    "YrIndex": 47,
+    "Epoch": "10's Gen 1",
+    "Year": 2,
+    "FullYearName": "10's Gen 1 - Year 2",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  },
+  {
+    "YrIndex": 48,
+    "Epoch": "10's Gen 1",
+    "Year": 3,
+    "FullYearName": "10's Gen 1 - Year 3",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  },
+  {
+    "YrIndex": 49,
+    "Epoch": "20's Gen 1",
+    "Year": 1,
+    "FullYearName": "20's Gen 1 - Year 1",
+    "startingYear": 1,
+    "bankruptLevel": -10000000
+  },
+  {
+    "YrIndex": 50,
+    "Epoch": "20's Gen 1",
+    "Year": 2,
+    "FullYearName": "20's Gen 1 - Year 2",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  },
+  {
+    "YrIndex": 51,
+    "Epoch": "20's Gen 1",
+    "Year": 3,
+    "FullYearName": "20's Gen 1 - Year 3",
+    "startingYear": 0,
+    "bankruptLevel": 0
+  }
+]
