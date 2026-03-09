@@ -1,0 +1,168 @@
+{
+  "headlines": {
+    "championship": [
+      "<Driver> Wins Championship",
+      "<Driver> Dominates the Field",
+      "<Driver> Impresses the Paddock",
+      "<Driver> Surges in Reputation"
+    ],
+    "progress": [
+      "<Driver> Makes Progress",
+      "<Driver> Shows Steady Improvement",
+      "<Driver> Builds Momentum",
+      "<Driver> Strengthens Reputation"
+    ],
+    "mixed": [
+      "<Driver> Holds Steady",
+      "<Driver> Faces Tight Competition",
+      "<Driver> Delivers Mixed Results",
+      "<Driver> Season Marked by Ups and Downs"
+    ],
+    "struggles": [
+      "<Driver> Suffers Through Challenges",
+      "<Driver> Faces Difficult Season",
+      "<Driver> Under Pressure After Results",
+      "<Driver> Reputation Takes a Hit"
+    ],
+    "contractDrama": [
+      "<Driver> Released Early!",
+      "<Driver> Dropped by Team",
+      "<Driver> Contract Not Renewed",
+      "<Driver> Forced Back to Free Agency"
+    ],
+    "financial": [
+      "<Driver> Nears Bankruptcy Threshold",
+      "<Driver> Faces Financial Strain",
+      "<Driver> Salary Keeps Career Alive"
+    ]
+  },
+
+  "commentary": {
+    "performance": {
+      "strong": [
+        "A strong finish this season has boosted your standing among teams.",
+        "Your pace and consistency have drawn praise from commentators across the paddock.",
+        "This season's results have elevated your reputation and opened new opportunities."
+      ],
+      "improving": [
+        "Your steady improvement has not gone unnoticed among team principals.",
+        "Observers note that your racecraft continues to develop with each season.",
+        "Your upward trajectory suggests you're ready for greater challenges."
+      ],
+      "mixed": [
+        "Inconsistent results have left analysts divided on your long-term potential.",
+        "A season of highs and lows has kept your reputation in a holding pattern.",
+        "Your performance showed flashes of promise but lacked consistency."
+      ],
+      "poor": [
+        "A difficult run of results has put pressure on your future prospects.",
+        "Analysts question whether this season represents a temporary setback or a worrying trend.",
+        "Your struggles this year have raised concerns about your competitiveness."
+      ]
+    },
+
+    "contract": {
+      "multiYear": [
+        "Your multi-year deal reflected growing confidence in your abilities.",
+        "The team’s commitment signaled belief in your long-term potential.",
+        "A multi-year contract brought stability, but expectations were high."
+      ],
+      "fired": [
+        "Your contract has been terminated due to missing performance thresholds.",
+        "Despite earning your salary, the team chose not to continue the partnership.",
+        "The early termination leaves you searching for a new opportunity."
+      ],
+      "expiring": [
+        "With your contract expiring, teams are evaluating your season closely.",
+        "Your future remains open as your current deal comes to an end.",
+        "The end of your contract has sparked speculation about your next move."
+      ],
+      "buyout": [
+        "Your decision to buy out your contract has generated buzz in the paddock.",
+        "Breaking your contract signals a bold shift in your career direction.",
+        "Your buyout has raised eyebrows but opened the door to new opportunities."
+      ]
+    },
+
+    "financial": {
+      "stable": [
+        "Your earnings this year provide much-needed financial stability.",
+        "A solid salary gives you breathing room heading into next season.",
+        "Your financial position has strengthened thanks to this season’s results."
+      ],
+      "tight": [
+        "You remain dangerously close to the bankruptcy threshold.",
+        "Financial strain continues to shape your career decisions.",
+        "Your earnings this season were not enough to ease long-term concerns."
+      ]
+    },
+
+    "progression": {
+      "upward": [
+        "Your LP growth signals readiness for higher-level competition.",
+        "Teams at the next tier are beginning to take notice.",
+        "Your development this season suggests you're on the rise."
+      ],
+      "stalled": [
+        "Remaining at this level another year may stall your development.",
+        "Analysts wonder whether a change of scenery is needed to reignite momentum.",
+        "Your progression has slowed, prompting questions about your next steps."
+      ],
+      "downward": [
+        "A step backward this season may require rebuilding momentum.",
+        "Your trajectory has dipped, and teams are watching closely.",
+        "This season’s setbacks have slowed your rise through the ranks."
+      ]
+    },
+
+    "identity": {
+      "formula": [
+        "Formula racing continues to showcase your raw pace.",
+        "Your adaptability in open-wheel machinery stands out to observers.",
+        "Your precision and aggression suit the demands of Formula competition."
+      ],
+      "gt": [
+        "Your performance in GT machinery highlights your versatility.",
+        "Analysts note your strong racecraft in multi-class environments.",
+        "Your endurance and consistency shine in GT competition."
+      ],
+      "stock": [
+        "Your resilience in Stock Car battles stands out to commentators.",
+        "Your ability to handle close-quarters racing has earned respect.",
+        "Your racecraft in Stock Cars continues to develop season by season."
+      ],
+      "vintage": [
+        "Your feel for vintage machinery has impressed longtime fans.",
+        "Your control and finesse suit the demands of classic racing.",
+        "Your performances in historic classes show strong mechanical sympathy."
+      ]
+    }
+  },
+
+  "promotionPopups": {
+    "headlines": [
+      "<Driver> Secures Breakthrough Opportunity!",
+      "<Driver> Earns Promotion to Higher Level",
+      "<Driver> Lands Major Contract",
+      "<Driver> Steps Up the Ladder"
+    ],
+    "commentary": [
+      "Teams have taken notice of your upward trajectory, and this move reflects growing confidence in your abilities.",
+      "This contract marks a major milestone in your career and opens the door to higher expectations.",
+      "Your performance and reputation have combined to create this opportunity—now the pressure rises.",
+      "A promotion of this magnitude signals a new chapter in your racing journey."
+    ]
+  },
+
+  "helpScreen": {
+    "title": "AMS2 Contract Manager – Career Guide",
+    "body": [
+      "Welcome to AMS2 Contract Manager, a career simulation built around the contract-driven world of motorsport. Your journey spans 18 seasons, progressing one year at a time through the eras of racing history.",
+      "Each season, you'll race a championship in AMS2, report your results, and earn three key resources: LP (License Points), RP (Reputation Points), and Earnings. LP determines which levels of racing you qualify for, RP influences the quality of contract offers you receive, and Earnings determine your financial survival.",
+      "At the start of your career, you'll choose a year and receive a bankruptcy threshold tied to that era. Your goal is to keep your total earnings above that threshold while climbing the ranks. Early in your career, many contracts will COST money - pay-driver deals are common at lower levels.",
+      "After each season, you'll receive contract offers based on your LP, RP, and the classes available in the upcoming year. Higher-tier contracts may span multiple seasons, but poor performance can lead to early termination. Strong results can open doors to promotions and better-paying opportunities.",
+      "Your dashboard tracks your active contract, season history, and career progression. Each season concludes with a media-style summary that reflects your performance, reputation, and contract situation.",
+      "Your career is shaped by your decisions, your results, and the evolving landscape of racing. Choose wisely, perform consistently, and navigate the financial and competitive pressures of the motorsport world."
+    ]
+  }
+}
