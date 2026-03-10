@@ -5,7 +5,7 @@
     "Year": 1,
     "FullYearName": "60's Gen 1 - Year 1",
     "startingYear": 1,
-    "bankruptLevel": "-150,000"
+    "bankruptLevel": -150,000
   },
   {
     "YrIndex": 2,
@@ -29,7 +29,7 @@
     "Year": 1,
     "FullYearName": "60's Gen 2 - Year 1",
     "startingYear": 1,
-    "bankruptLevel": "-350,000"
+    "bankruptLevel": -350,000
   },
   {
     "YrIndex": 5,
@@ -53,7 +53,7 @@
     "Year": 1,
     "FullYearName": "70's Gen 1 - Year 1",
     "startingYear": 1,
-    "bankruptLevel": "-750,000"
+    "bankruptLevel": -750,000
   },
   {
     "YrIndex": 8,
@@ -77,7 +77,7 @@
     "Year": 1,
     "FullYearName": "70's Gen 2 - Year 1",
     "startingYear": 1,
-    "bankruptLevel": "-1,000,000"
+    "bankruptLevel": -1,000,000
   },
   {
     "YrIndex": 11,
@@ -101,7 +101,7 @@
     "Year": 1,
     "FullYearName": "70's Gen 3 - Year 1",
     "startingYear": 1,
-    "bankruptLevel": "-1,250,000"
+    "bankruptLevel": -1,250,000
   },
   {
     "YrIndex": 14,
@@ -125,7 +125,7 @@
     "Year": 1,
     "FullYearName": "80's Gen 1 - Year 1",
     "startingYear": 1,
-    "bankruptLevel": "-2,000,000"
+    "bankruptLevel": -2,000,000
   },
   {
     "YrIndex": 17,
@@ -149,7 +149,7 @@
     "Year": 1,
     "FullYearName": "80's Gen 2 - Year 1",
     "startingYear": 1,
-    "bankruptLevel": "-2,500,000"
+    "bankruptLevel": -2,500,000
   },
   {
     "YrIndex": 20,
@@ -173,7 +173,7 @@
     "Year": 1,
     "FullYearName": "80's Gen 3 - Year 1",
     "startingYear": 1,
-    "bankruptLevel": "-2,500,000"
+    "bankruptLevel": -2,500,000
   },
   {
     "YrIndex": 23,
@@ -197,7 +197,7 @@
     "Year": 1,
     "FullYearName": "90's Gen 1 - Year 1",
     "startingYear": 1,
-    "bankruptLevel": "-3,000,000"
+    "bankruptLevel": -3,000,000
   },
   {
     "YrIndex": 26,
@@ -221,7 +221,7 @@
     "Year": 1,
     "FullYearName": "90's Gen 2 - Year 1",
     "startingYear": 1,
-    "bankruptLevel": "-3,000,000"
+    "bankruptLevel": -3,000,000
   },
   {
     "YrIndex": 29,
@@ -245,7 +245,7 @@
     "Year": 1,
     "FullYearName": "90's Gen 3 - Year 1",
     "startingYear": 1,
-    "bankruptLevel": "-3,000,000"
+    "bankruptLevel": -3,000,000
   },
   {
     "YrIndex": 32,
@@ -269,7 +269,7 @@
     "Year": 1,
     "FullYearName": "90's Gen 4 - Year 1",
     "startingYear": 1,
-    "bankruptLevel": "-5,000,000"
+    "bankruptLevel": -5,000,000
   },
   {
     "YrIndex": 35,
@@ -293,7 +293,7 @@
     "Year": 1,
     "FullYearName": "00's Gen 1 - Year 1",
     "startingYear": 1,
-    "bankruptLevel": "-5,000,000"
+    "bankruptLevel": -5,000,000
   },
   {
     "YrIndex": 38,
@@ -317,7 +317,7 @@
     "Year": 1,
     "FullYearName": "00's Gen 1 - Year 1",
     "startingYear": 1,
-    "bankruptLevel": "-7,500,000"
+    "bankruptLevel": -7,500,000
   },
   {
     "YrIndex": 41,
@@ -341,7 +341,7 @@
     "Year": 1,
     "FullYearName": "00's Gen 2 - Year 1",
     "startingYear": 1,
-    "bankruptLevel": "-7,500,000"
+    "bankruptLevel": -7,500,000
   },
   {
     "YrIndex": 44,
@@ -365,7 +365,7 @@
     "Year": 1,
     "FullYearName": "10's Gen 1 - Year 1",
     "startingYear": 1,
-    "bankruptLevel": "-7,500,000"
+    "bankruptLevel": -7,500,000
   },
   {
     "YrIndex": 47,
@@ -389,7 +389,7 @@
     "Year": 1,
     "FullYearName": "20's Gen 1 - Year 1",
     "startingYear": 0,
-    "bankruptLevel": "-7,500,000"
+    "bankruptLevel": -7,500,000
   },
   {
     "YrIndex": 50,
