@@ -157,7 +157,7 @@
   "helpScreen": {
     "title": "AMS2 Contract Manager – Career Guide",
     "body": [
-      "Welcome to AMS2 Contract Manager, a career simulation built around the contract-driven world of motorsport. Your journey spans 18 seasons, progressing one year at a time through the eras of racing history.",
+      "Welcome to AMS2 Contract Manager, a career simulation built around the contract-driven world of motorsport. Your journey spans 21 seasons, progressing one year at a time through the eras of racing history.",
       "Each season, you'll race a championship in AMS2, report your results, and earn three key resources: LP (License Points), RP (Reputation Points), and Earnings. LP determines which levels of racing you qualify for, RP influences the quality of contract offers you receive, and Earnings determine your financial survival.",
       "At the start of your career, you'll choose a year and receive a bankruptcy threshold tied to that era. Your goal is to keep your total earnings above that threshold while climbing the ranks. Early in your career, many contracts will COST money - pay-driver deals are common at lower levels.",
       "After each season, you'll receive contract offers based on your LP, RP, and the classes available in the upcoming year. Higher-tier contracts may span multiple seasons, but poor performance can lead to early termination. Strong results can open doors to promotions and better-paying opportunities.",
@@ -176,3 +176,4 @@
 }
 
 }
+
