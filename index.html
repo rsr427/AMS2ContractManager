@@ -99,6 +99,28 @@
       font-weight: 600;
     }
 
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .modal {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+
     /* ===========================
        BUTTONS
        =========================== */
@@ -955,19 +977,32 @@
       // Current series block
       if (driver.activeContract) {
         const c = driver.activeContract;
-      currentSeriesBlock.innerHTML = `
-        <div><strong>Active Series:</strong> ${c.className} (Level ${c.level}, Tier ${c.tier})</div>
-        <div class="small-note" style="margin-top:4px; font-style:italic;">
-          ${getClassById(c.classID)?.ScheduleNote || ""}
-        </div>
-        <div class="small-note" style="margin-top:6px;">
-          Contract: ${c.yearsRemaining} season(s) remaining • Salary: ${formatMoney(c.salaryPerSeason)} per season
-        </div>
-        <button id="enterResultButton" class="btn btn-small" style="margin-top:0.5rem;">Enter Championship Result</button>
-      `;
+        currentSeriesBlock.innerHTML = `
+          <div><strong>Active Series:</strong> ${c.className} (Level ${c.level}, Tier ${c.tier})</div>
+          <div class="small-note" style="margin-top:4px; font-style:italic;">
+            ${getClassById(c.classID)?.ScheduleNote || ""}
+          </div>
+          <div class="small-note" style="margin-top:6px;">
+            Contract: ${c.yearsRemaining} season(s) remaining • Salary: ${formatMoney(c.salaryPerSeason)} per season
+          </div>
+          <button id="enterResultButton" class="btn btn-small" style="margin-top:0.5rem;">Enter Championship Result</button>
+          ${c.initialYears > 1 ? `
+            <button id="breakContractButton" class="btn btn-small btn-danger" style="margin-top:0.5rem; margin-left:0.5rem;">
+              Break Contract
+            </button>
+          ` : ``}        `;
         document.getElementById('enterResultButton').addEventListener('click', () => {
           showEnterResultModal(driver);
         });
+        document.getElementById('enterResultButton').addEventListener('click', () => {
+          showEnterResultModal(driver);
+        });
+        if (c.initialYears > 1) {
+          document.getElementById('breakContractButton').addEventListener('click', () => {
+            showBreakContractPrompt(driver);
+          });
+        }
+
       } else {
         if (driver.careerComplete) {
           currentSeriesBlock.innerHTML = `
@@ -1059,8 +1094,8 @@
       // Detect high-pressure situation:
       // Tier 1 or 2 AND Level 3, 4, or 5
       const isHighPressure =
-        (c.tier === 1 || c.tier === 2) &&
-        (c.level >= 3 && c.level <= 5);
+        (contract.tier === 1 || contract.tier === 2) &&
+        (contract.level >= 3 && contract.level <= 5);
 
       if (isHighPressure) {
         // High-pressure RP rules
@@ -1211,6 +1246,68 @@
       ]);
     }
 
+    function showBreakContractPrompt(driver) {
+      const c = driver.activeContract;
+      const penalty = Math.floor(c.salaryPerSeason / 2);
+
+      const confirmHtml = `
+        <div class="modal-overlay">
+          <div class="modal">
+            <h3>Break Contract?</h3>
+            <p>You may break your contract, but it will cost:</p>
+            <ul>
+              <li>${formatMoney(penalty)} (half your salary x years remaining)</li>
+              <li>1 Reputation Point</li>
+            </ul>
+            <p>Are you sure you want to proceed?</p>
+            <div class="modal-buttons">
+              <button id="confirmBreakContract" class="btn btn-danger">Yes, Break Contract</button>
+              <button id="cancelBreakContract" class="btn btn-secondary">Cancel</button>
+            </div>
+          </div>
+        </div>
+      `;
+
+      document.body.insertAdjacentHTML("beforeend", confirmHtml);
+
+      document.getElementById("confirmBreakContract").addEventListener("click", () => {
+        finalizeContractBreak(driver);
+        document.querySelector(".modal-overlay").remove();
+      });
+
+      document.getElementById("cancelBreakContract").addEventListener("click", () => {
+        document.querySelector(".modal-overlay").remove();
+      });
+    }
+
+    function finalizeContractBreak(driver) {
+      const c = driver.activeContract;
+      const penalty = Math.floor(c.salaryPerSeason / 2);
+
+      // Apply financial penalty
+      driver.earnings -= penalty;
+
+      // Apply RP penalty
+      driver.rp = Math.max(0, driver.rp - 1);
+
+      // Add history entry for the broken contract
+      driver.history.push({
+        yearName: getYearByIndex(driver.currentYrIndex)?.FullYearName || "Unknown Year",
+        className: c.className,
+        level: c.level,
+        tier: c.tier,
+        salary: -penalty,              // negative value shows the cost
+        finish: "Contract Broken",     // clear label in the table
+        fired: false                   // not fired, but voluntarily broken
+      });
+
+      // Clear contract
+      driver.activeContract = null;
+
+      // Refresh UI
+      renderDashboard();
+    }
+
     // ===========================
     // CONTRACT OFFER GENERATION
     // ===========================
@@ -1234,7 +1331,8 @@
       const lastHistory = driver.history?.[driver.history.length - 1];
       const lastLevel = lastHistory ? lastHistory.level : null;
 
-      if (lastLevel !== null) {
+      // Apply ±1 level rule only after Year 12
+      if (lastLevel !== null && nextYrIndex > 11) {
         eligibleClasses = eligibleClasses.filter(c =>
           Math.abs(c.Level - lastLevel) <= 1
         );
@@ -1345,7 +1443,8 @@
         level: offer.level,
         tier: offer.tier,
         salaryPerSeason: offer.salaryPerSeason,
-        yearsRemaining: offer.years
+        yearsRemaining: offer.years,
+        initialYears: offer.years
       };
 
       updateActiveDriver(driver);
