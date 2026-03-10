@@ -1055,10 +1055,29 @@
 
       // RP change
       let rpDelta = 0;
-      if (finish === 1) rpDelta = 3;
-      else if (finish >= 2 && finish <= 4) rpDelta = 2;
-      else if (finish >= 5 && finish <= 7) rpDelta = 1;
-      else if (finish >= 11) rpDelta = -1;
+
+      // Detect high-pressure situation:
+      // Tier 1 or 2 AND Level 3, 4, or 5
+      const isHighPressure =
+        (c.tier === 1 || c.tier === 2) &&
+        (c.level >= 3 && c.level <= 5);
+
+      if (isHighPressure) {
+        // High-pressure RP rules
+        if (finish === 1) rpDelta = 3;
+        else if (finish === 2 || finish === 3) rpDelta = 2;
+        else if (finish === 4 || finish === 5) rpDelta = 1;
+        else if (finish === 6 || finish === 7) rpDelta = 0;
+        else if (finish >= 8 && finish <= 10) rpDelta = -1;
+        else if (finish >= 11) rpDelta = -2;
+
+      } else {
+        // Original RP rules
+        if (finish === 1) rpDelta = 3;
+        else if (finish >= 2 && finish <= 4) rpDelta = 2;
+        else if (finish >= 5 && finish <= 7) rpDelta = 1;
+        else if (finish >= 11) rpDelta = -1;
+      }
 
       driver.rp = Math.max(0, driver.rp + rpDelta);
 
@@ -1091,6 +1110,11 @@
       driver.lp += 1;
       driver.seasonsCompleted += 1;
 
+      // Age-related RP decay: subtract 1 RP each season after Year 15
+      if (driver.seasonsCompleted > 15) {
+        driver.rp = Math.max(0, driver.rp - 1);
+      }
+
       // Build narrative
       const narrative = buildSeasonNarrative(driver, {
         finish,
@@ -1102,7 +1126,7 @@
       renderNarrative(narrative);
 
       // Career end check
-      if (driver.seasonsCompleted >= 18) {
+      if (driver.seasonsCompleted >= 21) {
         // Final year: no new offers, show career end popup
         driver.activeContract = null;
         driver.careerComplete = true
@@ -1165,7 +1189,7 @@
 
     function showCareerEndPopup(driver) {
       const prompts = appData.textPrompts.careerEnd || {
-        headline: `${driver.name} Concludes an 18-Year Career`,
+        headline: `${driver.name} Concludes an 21-Year Career`,
         commentary: [
           'After nearly two decades of competition, your journey through the world of motorsport comes to a close.',
           'Your career featured triumphs, challenges, and defining moments that shaped your legacy.',
