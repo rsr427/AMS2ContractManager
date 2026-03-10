@@ -31,7 +31,7 @@
     "Tier2": 2500000,
     "Tier1": 10000000,
     "firstYear": 49,
-    "lastYear": 66
+    "lastYear": 69
   },
   {
     "ClassID": 3,
@@ -184,7 +184,7 @@
     "Tier2": 1000000,
     "Tier1": 1500000,
     "firstYear": 49,
-    "lastYear": 66
+    "lastYear": 69
   },
   {
     "ClassID": 12,
@@ -337,7 +337,7 @@
     "Tier2": 600000,
     "Tier1": 2500000,
     "firstYear": 49,
-    "lastYear": 66
+    "lastYear": 69
   },
   {
     "ClassID": 21,
@@ -473,7 +473,7 @@
     "Tier2": 150000,
     "Tier1": 400000,
     "firstYear": 49,
-    "lastYear": 66
+    "lastYear": 69
   },
   {
     "ClassID": 29,
@@ -507,7 +507,7 @@
     "Tier2": 200000,
     "Tier1": 400000,
     "firstYear": 46,
-    "lastYear": 66
+    "lastYear": 69
   },
   {
     "ClassID": 31,
@@ -558,7 +558,7 @@
     "Tier2": 150000,
     "Tier1": 300000,
     "firstYear": 49,
-    "lastYear": 66
+    "lastYear": 69
   },
   {
     "ClassID": 34,
@@ -592,7 +592,7 @@
     "Tier2": 200000,
     "Tier1": 400000,
     "firstYear": 50,
-    "lastYear": 66
+    "lastYear": 69
   },
   {
     "ClassID": 36,
@@ -643,7 +643,7 @@
     "Tier2": 250000,
     "Tier1": 450000,
     "firstYear": 46,
-    "lastYear": 66
+    "lastYear": 69
   },
   {
     "ClassID": 39,
@@ -711,7 +711,7 @@
     "Tier2": 225000,
     "Tier1": 400000,
     "firstYear": 43,
-    "lastYear": 66
+    "lastYear": 69
   },
   {
     "ClassID": 43,
@@ -762,7 +762,7 @@
     "Tier2": 100000,
     "Tier1": 250000,
     "firstYear": 49,
-    "lastYear": 66
+    "lastYear": 69
   },
   {
     "ClassID": 46,
@@ -830,7 +830,7 @@
     "Tier2": 75000,
     "Tier1": 150000,
     "firstYear": 46,
-    "lastYear": 66
+    "lastYear": 69
   },
   {
     "ClassID": 50,
@@ -881,7 +881,7 @@
     "Tier2": -50000,
     "Tier1": 100000,
     "firstYear": 49,
-    "lastYear": 66
+    "lastYear": 69
   },
   {
     "ClassID": 53,
@@ -949,7 +949,7 @@
     "Tier2": -25000,
     "Tier1": 50000,
     "firstYear": 46,
-    "lastYear": 66
+    "lastYear": 69
   },
   {
     "ClassID": 57,
@@ -966,7 +966,7 @@
     "Tier2": -25000,
     "Tier1": 50000,
     "firstYear": 49,
-    "lastYear": 66
+    "lastYear": 69
   },
   {
     "ClassID": 58,
@@ -983,7 +983,7 @@
     "Tier2": 25000,
     "Tier1": 50000,
     "firstYear": 46,
-    "lastYear": 66
+    "lastYear": 69
   },
   {
     "ClassID": 59,
@@ -1034,7 +1034,7 @@
     "Tier2": 75000,
     "Tier1": 125000,
     "firstYear": 43,
-    "lastYear": 66
+    "lastYear": 69
   },
   {
     "ClassID": 62,
@@ -1051,7 +1051,7 @@
     "Tier2": 50000,
     "Tier1": 100000,
     "firstYear": 43,
-    "lastYear": 66
+    "lastYear": 69
   },
   {
     "ClassID": 63,
@@ -1068,7 +1068,7 @@
     "Tier2": 35000,
     "Tier1": 75000,
     "firstYear": 46,
-    "lastYear": 66
+    "lastYear": 69
   },
   {
     "ClassID": 64,
@@ -1085,7 +1085,7 @@
     "Tier2": -25000,
     "Tier1": 50000,
     "firstYear": 46,
-    "lastYear": 66
+    "lastYear": 69
   },
   {
     "ClassID": 65,
@@ -1102,7 +1102,7 @@
     "Tier2": 0,
     "Tier1": 25000,
     "firstYear": 43,
-    "lastYear": 66
+    "lastYear": 69
   },
   {
     "ClassID": 66,
@@ -1119,7 +1119,7 @@
     "Tier2": 0,
     "Tier1": 25000,
     "firstYear": 43,
-    "lastYear": 66
+    "lastYear": 69
   },
   {
     "ClassID": 67,
@@ -1136,7 +1136,7 @@
     "Tier2": 0,
     "Tier1": 25000,
     "firstYear": 43,
-    "lastYear": 66
+    "lastYear": 69
   },
   {
     "ClassID": 68,
@@ -1153,7 +1153,7 @@
     "Tier2": -25000,
     "Tier1": 20000,
     "firstYear": 43,
-    "lastYear": 66
+    "lastYear": 69
   },
   {
     "ClassID": 69,
@@ -1170,7 +1170,7 @@
     "Tier2": -25000,
     "Tier1": 15000,
     "firstYear": 46,
-    "lastYear": 66
+    "lastYear": 69
   },
   {
     "ClassID": 70,
@@ -1204,7 +1204,7 @@
     "Tier2": -10000,
     "Tier1": 10000,
     "firstYear": 43,
-    "lastYear": 66
+    "lastYear": 69
   },
   {
     "ClassID": 72,
@@ -1238,7 +1238,7 @@
     "Tier2": -25000,
     "Tier1": 5000,
     "firstYear": 46,
-    "lastYear": 66
+    "lastYear": 69
   },
   {
     "ClassID": 74,
@@ -1340,7 +1340,7 @@
     "Tier2": -7500,
     "Tier1": 0,
     "firstYear": 49,
-    "lastYear": 66
+    "lastYear": 69
   },
   {
     "ClassID": 80,
@@ -1357,7 +1357,7 @@
     "Tier2": -2000,
     "Tier1": 0,
     "firstYear": 10,
-    "lastYear": 66
+    "lastYear": 69
   },
   {
     "ClassID": 81,
@@ -1391,7 +1391,7 @@
     "Tier2": -4000,
     "Tier1": -2000,
     "firstYear": 10,
-    "lastYear": 66
+    "lastYear": 69
   },
   {
     "ClassID": 83,
