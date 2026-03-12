@@ -172,7 +172,7 @@
     "After nearly two decades of competition, your journey through the world of motorsport comes to a close.",
     "Your career featured triumphs, challenges, and defining moments that shaped your legacy.",
     "You retire with total earnings of $<Earnings>, marking the final chapter of your racing story."
-  ]  
+  ],  
   "aiScreen": {
     "title": "AMS2 Contract Manager – AI Calibration",
     "body": [
@@ -181,10 +181,5 @@
       "2) Adjust the AI after each race in accordance with your performance.  Increment the AI difficulty one point if you score the pole position and an additional point for a podium result. If you finish outside of the top 8, weaken the AI by one point.",
       "Throughout the course of the season, advantage will sway between player and AI with the goal being that each race should be exciting and meaningul. As you improve your skills and familiarity with the car, you may be able to overcome the difficulty ramp and snag that championship!"
     ]
-  },
+  }
 }
-
-}
-
-
-
