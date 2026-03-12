@@ -172,9 +172,19 @@
     "After nearly two decades of competition, your journey through the world of motorsport comes to a close.",
     "Your career featured triumphs, challenges, and defining moments that shaped your legacy.",
     "You retire with total earnings of $<Earnings>, marking the final chapter of your racing story."
-  ]
+  ]  
+  "aiScreen": {
+    "title": "AMS2 Contract Manager – AI Calibration",
+    "body": [
+      "To calibrate your opponents for a challenging and reqrding season, the following process is recommended.",
+      "1) Run a single race qualifying session at a track at which you're comfortable. Through trial and error, find an opponent level where you can barely break into the top 5 (if considering a Tier 1 or Tier 2 contract). If you're considering or racing under a Tier 3 or Tier 4 contract, toughen the opponents so that you can barely break into the top half of a 20 car field. This difficulty gradient should accrutely reflect the level of the contract you're being offered.",
+      "2) Adjust the AI after each race in accordance with your performance.  Increment the AI difficulty one point if you score the pole position and an additional point for a podium result. If you finish outside of the top 8, weaken the AI by one point.",
+      "Throughout the course of the season, advantage will sway between player and AI with the goal being that each race should be exciting and meaningul. As you improve your skills and familiarity with the car, you may be able to overcome the difficulty ramp and snag that championship!"
+    ]
+  },
 }
 
 }
+
 
 
