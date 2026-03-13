@@ -438,6 +438,7 @@
 <!--      <div class="app-logo">AMS2 Contract Manager</div> -->
       <div class="app-actions">
         <button id="helpButton" class="btn-secondary btn-small">Help</button>
+        <button id="aiCalButton" class="btn btn-small" style="margin-left:0.5rem;">Opponent Calibration</button>
       </div>
     </header>
 
@@ -1561,6 +1562,7 @@
     // ===========================
 
     const helpButton = document.getElementById('helpButton');
+    const aiCalButton = document.getElementById('aiCalButton');
 
     function showHelpPopup() {
       const help = appData.textPrompts.helpScreen;
@@ -1575,8 +1577,23 @@
       ]);
     }
 
-    helpButton.addEventListener('click', showHelpPopup);
+    function showAICalibrationPopup() {
+      const ai = appData.textPrompts.aiScreen;
+      const title = ai.title || 'Opponent Calibration';
+      const bodyHTML = ai.body.map(p => `<p>${p}</p>`).join('');
 
+      showModal(title, bodyHTML, [
+        {
+          label: 'Close',
+          className: 'btn',
+          onClick: closeModal
+        }
+      ]);
+    }
+
+    helpButton.addEventListener('click', showHelpPopup);
+    aiCalButton.addEventListener('click', showAICalibrationPopup);
+    
     // ===========================
     // APP INIT
     // ===========================
