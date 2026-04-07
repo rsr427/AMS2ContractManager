@@ -1,23 +1,6 @@
 [
   {
     "ClassID": 1,
-    "Class": "Formula Hybrid Gen 1",
-    "Level": 5,
-    "ScheduleNote": "12 races, 12 rounds",
-    "minLP": 4,
-    "rpTier4": 7,
-    "rpTier3": 11,
-    "rpTier2": 14,
-    "rpTier1": 17,
-    "Tier4": -5000000,
-    "Tier3": 500000,
-    "Tier2": 2500000,
-    "Tier1": 10000000,
-    "firstYear": 46,
-    "lastYear": 48
-  },
-  {
-    "ClassID": 2,
     "Class": "Formula Hybrid Gen 2",
     "Level": 5,
     "ScheduleNote": "12 races, 12 rounds",
@@ -31,6 +14,23 @@
     "Tier2": 2500000,
     "Tier1": 10000000,
     "firstYear": 49,
+    "lastYear": 51
+  },
+  {
+    "ClassID": 2,
+    "Class": "Formula Hybrid Gen 3",
+    "Level": 5,
+    "ScheduleNote": "12 races, 12 rounds",
+    "minLP": 4,
+    "rpTier4": 7,
+    "rpTier3": 11,
+    "rpTier2": 14,
+    "rpTier1": 17,
+    "Tier4": -5000000,
+    "Tier3": 500000,
+    "Tier2": 2500000,
+    "Tier1": 10000000,
+    "firstYear": 52,
     "lastYear": 69
   },
   {
@@ -86,7 +86,7 @@
   },
   {
     "ClassID": 6,
-    "Class": "Formula V12",
+    "Class": "Formula Edge",
     "Level": 5,
     "ScheduleNote": "12 races, 12 rounds",
     "minLP": 4,
@@ -183,7 +183,7 @@
     "Tier3": 250000,
     "Tier2": 1000000,
     "Tier1": 1500000,
-    "firstYear": 49,
+    "firstYear": 52,
     "lastYear": 69
   },
   {
@@ -472,7 +472,7 @@
     "Tier3": 75000,
     "Tier2": 150000,
     "Tier1": 400000,
-    "firstYear": 49,
+    "firstYear": 52,
     "lastYear": 69
   },
   {
@@ -490,7 +490,7 @@
     "Tier2": 125000,
     "Tier1": 300000,
     "firstYear": 46,
-    "lastYear": 48
+    "lastYear": 51
   },
   {
     "ClassID": 30,
@@ -506,7 +506,7 @@
     "Tier3": 125000,
     "Tier2": 200000,
     "Tier1": 400000,
-    "firstYear": 46,
+    "firstYear": 49,
     "lastYear": 69
   },
   {
@@ -523,7 +523,7 @@
     "Tier3": 50000,
     "Tier2": 100000,
     "Tier1": 300000,
-    "firstYear": 40,
+    "firstYear": 37,
     "lastYear": 42
   },
   {
@@ -541,7 +541,7 @@
     "Tier2": 150000,
     "Tier1": 300000,
     "firstYear": 43,
-    "lastYear": 45
+    "lastYear": 48
   },
   {
     "ClassID": 33,
@@ -557,7 +557,7 @@
     "Tier3": 75000,
     "Tier2": 150000,
     "Tier1": 300000,
-    "firstYear": 49,
+    "firstYear": 46,
     "lastYear": 69
   },
   {
@@ -574,8 +574,8 @@
     "Tier3": 100000,
     "Tier2": 200000,
     "Tier1": 400000,
-    "firstYear": 48,
-    "lastYear": 49
+    "firstYear": 51,
+    "lastYear": 52
   },
   {
     "ClassID": 35,
@@ -591,8 +591,8 @@
     "Tier3": 100000,
     "Tier2": 200000,
     "Tier1": 400000,
-    "firstYear": 50,
-    "lastYear": 69
+    "firstYear": 53,
+    "lastYear": 54
   },
   {
     "ClassID": 36,
@@ -608,8 +608,8 @@
     "Tier3": 80000,
     "Tier2": 175000,
     "Tier1": 350000,
-    "firstYear": 45,
-    "lastYear": 46
+    "firstYear": 47,
+    "lastYear": 48
   },
   {
     "ClassID": 37,
@@ -625,8 +625,8 @@
     "Tier3": 80000,
     "Tier2": 175000,
     "Tier1": 350000,
-    "firstYear": 47,
-    "lastYear": 47
+    "firstYear": 49,
+    "lastYear": 50
   },
   {
     "ClassID": 38,
@@ -677,7 +677,7 @@
     "Tier2": 175000,
     "Tier1": 350000,
     "firstYear": 43,
-    "lastYear": 43
+    "lastYear": 44
   },
   {
     "ClassID": 41,
@@ -693,8 +693,8 @@
     "Tier3": 80000,
     "Tier2": 175000,
     "Tier1": 350000,
-    "firstYear": 44,
-    "lastYear": 44
+    "firstYear": 45,
+    "lastYear": 46
   },
   {
     "ClassID": 42,
@@ -727,8 +727,8 @@
     "Tier3": 50000,
     "Tier2": 100000,
     "Tier1": 300000,
-    "firstYear": 40,
-    "lastYear": 45
+    "firstYear": 37,
+    "lastYear": 42
   },
   {
     "ClassID": 44,
@@ -745,7 +745,7 @@
     "Tier2": 100000,
     "Tier1": 300000,
     "firstYear": 43,
-    "lastYear": 45
+    "lastYear": 48
   },
   {
     "ClassID": 45,
@@ -761,7 +761,7 @@
     "Tier3": 50000,
     "Tier2": 100000,
     "Tier1": 250000,
-    "firstYear": 49,
+    "firstYear": 52,
     "lastYear": 69
   },
   {
@@ -813,7 +813,7 @@
     "Tier2": 100000,
     "Tier1": 250000,
     "firstYear": 43,
-    "lastYear": 48
+    "lastYear": 51
   },
   {
     "ClassID": 49,
@@ -829,7 +829,7 @@
     "Tier3": 25000,
     "Tier2": 75000,
     "Tier1": 150000,
-    "firstYear": 46,
+    "firstYear": 49,
     "lastYear": 69
   },
   {
@@ -880,7 +880,7 @@
     "Tier3": -200000,
     "Tier2": -50000,
     "Tier1": 100000,
-    "firstYear": 49,
+    "firstYear": 52,
     "lastYear": 69
   },
   {
@@ -965,7 +965,7 @@
     "Tier3": -100000,
     "Tier2": -25000,
     "Tier1": 50000,
-    "firstYear": 49,
+    "firstYear": 52,
     "lastYear": 69
   },
   {
@@ -1169,7 +1169,7 @@
     "Tier3": -55000,
     "Tier2": -25000,
     "Tier1": 15000,
-    "firstYear": 46,
+    "firstYear": 49,
     "lastYear": 69
   },
   {
@@ -1323,7 +1323,7 @@
     "Tier2": -5000,
     "Tier1": 0,
     "firstYear": 19,
-    "lastYear": 48
+    "lastYear": 51
   },
   {
     "ClassID": 79,
@@ -1339,7 +1339,7 @@
     "Tier3": -15000,
     "Tier2": -7500,
     "Tier1": 0,
-    "firstYear": 49,
+    "firstYear": 52,
     "lastYear": 69
   },
   {
@@ -1408,7 +1408,7 @@
     "Tier2": -10000,
     "Tier1": -5000,
     "firstYear": 25,
-    "lastYear": 48
+    "lastYear": 45
   },
   {
     "ClassID": 84,
@@ -1442,6 +1442,23 @@
     "Tier2": -15000,
     "Tier1": -5000,
     "firstYear": 43,
+    "lastYear": 48
+  },
+  {
+    "ClassID": 86,
+    "Class": "Formula Hybrid Gen 1",
+    "Level": 5,
+    "ScheduleNote": "12 races, 12 rounds",
+    "minLP": 4,
+    "rpTier4": 7,
+    "rpTier3": 11,
+    "rpTier2": 14,
+    "rpTier1": 17,
+    "Tier4": -5000000,
+    "Tier3": 500000,
+    "Tier2": 2500000,
+    "Tier1": 10000000,
+    "firstYear": 46,
     "lastYear": 48
   }
 ]
